@@ -1,38 +1,38 @@
 class ApiFeature {
-  constructor(qurey, qureyStr) {
-    this.qurey = qurey;
-    this.qureyStr = qureyStr;
+  constructor(query, queryStr) {
+    this.query = query;
+    this.queryStr = queryStr;
   }
   search() {
-    const keyword = this.qureyStr.keyword
+    const keyword = this.queryStr.keyword
       ? {
           name: {
-            $regex: this.qureyStr.keyword,
+            $regex: this.queryStr.keyword,
             $options: "i",
           },
         }
       : {};
     console.log(keyword);
-    this.qurey = this.qurey.find({ ...keyword });
+    this.query = this.query.find({ ...keyword });
     return this;
   }
 
   filter() {
-    const queryCopy = { ...this.qureyStr };
+    const queryCopy = { ...this.queryStr };
     const removedFields = ["keyword", "limit", "page"];
     removedFields.forEach((key) => delete queryCopy[key]);
 
     // Filter For Price and Rating
-    let qureyStr = JSON.stringify(queryCopy);
-    qureyStr = qureyStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
+    let queryStr = JSON.stringify(queryCopy);
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
 
-    this.qurey = this.qurey.find(JSON.parse(qureyStr));
+    this.query = this.query.find(JSON.parse(queryStr));
     return this;
   }
   pagination(resultPerPage) {
-    const currentPage = Number(this.qureyStr.page) || 1;
+    const currentPage = Number(this.queryStr.page) || 1;
     const skip = resultPerPage * (currentPage - 1);
-    this.qurey = this.qurey.limit(resultPerPage).skip(skip);
+    this.query = this.query.limit(resultPerPage).skip(skip);
     return this;
   }
 }
