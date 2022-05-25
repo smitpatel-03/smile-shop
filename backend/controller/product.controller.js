@@ -1,7 +1,7 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
 const Product = require("../models/product.model");
 const ErrorHandler = require("../utils/errorHandler");
-
+const ApiFeature = require("../utils/apiFeatures");
 //Create new Product --only for admin
 //Use Product.create(req.body) for create the product
 
@@ -16,7 +16,9 @@ createProduct = catchAsyncError(async (req, res, next) => {
 //Use Prodcuct.find() to get all products
 //if there is product then send the product else send error
 getAllProducts = catchAsyncError(async (req, res) => {
-  const product = await Product.find();
+  const apiFetures = new ApiFeature(Product.find(), req.query).search();
+  const product = await apiFetures.qurey;
+
   if (!product) {
     return next(new ErrorHandler("Product not found", 404));
   }
@@ -44,7 +46,7 @@ getProductDetails = catchAsyncError(async (req, res, next) => {
 // usefingbyIdAndUpdate pass the product , req.body and object of three params
 // new runValidators and useFindAndModify
 
-  updateProduct = catchAsyncError(async (req, res, next) => {
+updateProduct = catchAsyncError(async (req, res, next) => {
   const productId = req.params.productId;
   let product = await Product.findById(productId);
   if (!product) {
