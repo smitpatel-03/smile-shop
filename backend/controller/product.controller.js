@@ -16,7 +16,7 @@ createProduct = catchAsyncError(async (req, res, next) => {
 //Use Prodcuct.find() to get all products
 //if there is product then send the product else send error
 getAllProducts = catchAsyncError(async (req, res) => {
-  const apiFetures = new ApiFeature(Product.find(), req.query).search();
+  const apiFetures = new ApiFeature(Product, req.query).search();
   const product = await apiFetures.qurey;
 
   if (!product) {
