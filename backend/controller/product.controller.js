@@ -16,7 +16,12 @@ createProduct = catchAsyncError(async (req, res, next) => {
 //Use Prodcuct.find() to get all products
 //if there is product then send the product else send error
 getAllProducts = catchAsyncError(async (req, res) => {
-  const apiFetures = new ApiFeature(Product, req.query).search().filter();
+  const resultPerPage = 5;
+  const apiFetures = new ApiFeature(Product, req.query)
+    .search()
+    .filter()
+    .pagination(resultPerPage);
+  const productCount = await Product.countDocuments();
   const product = await apiFetures.qurey;
 
   if (!product) {
@@ -25,6 +30,7 @@ getAllProducts = catchAsyncError(async (req, res) => {
   res.status(200).json({
     success: true,
     product,
+    productCount, 
   });
 });
 

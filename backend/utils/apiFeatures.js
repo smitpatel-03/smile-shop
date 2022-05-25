@@ -29,6 +29,12 @@ class ApiFeature {
     this.qurey = this.qurey.find(JSON.parse(qureyStr));
     return this;
   }
+  pagination(resultPerPage) {
+    const currentPage = Number(this.qureyStr.page) || 1;
+    const skip = resultPerPage * (currentPage - 1);
+    this.qurey = this.qurey.limit(resultPerPage).skip(skip);
+    return this;
+  }
 }
 
 module.exports = ApiFeature;
