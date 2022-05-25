@@ -16,6 +16,19 @@ class ApiFeature {
     this.qurey = this.qurey.find({ ...keyword });
     return this;
   }
+
+  filter() {
+    const queryCopy = { ...this.qureyStr };
+    const removedFields = ["keyword", "limit", "page"];
+    removedFields.forEach((key) => delete queryCopy[key]);
+
+    // Filter For Price and Rating
+    let qureyStr = JSON.stringify(queryCopy);
+    qureyStr = qureyStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
+
+    this.qurey = this.qurey.find(JSON.parse(qureyStr));
+    return this;
+  }
 }
 
 module.exports = ApiFeature;
