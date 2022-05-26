@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { required } = require("nodemon/lib/config");
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -59,12 +60,17 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-      },
     },
   ],
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Product", productSchema);
