@@ -5,7 +5,7 @@ const ApiFeature = require("../utils/apiFeatures");
 //Create new Product --only for admin
 //Use Product.create(req.body) for create the product
 
-createProduct = catchAsyncError(async (req, res, next) => {
+const createProduct = catchAsyncError(async (req, res, next) => {
   const product = await Product.create(req.body);
   res.status(200).json({
     product,
@@ -15,7 +15,7 @@ createProduct = catchAsyncError(async (req, res, next) => {
 //Get all products
 //Use Prodcuct.find() to get all products
 //if there is product then send the product else send error
-getAllProducts = catchAsyncError(async (req, res) => {
+const getAllProducts = catchAsyncError(async (req, res) => {
   const resultPerPage = 5;
   const apiFetures = new ApiFeature(Product, req.query)
     .search()
@@ -34,7 +34,7 @@ getAllProducts = catchAsyncError(async (req, res) => {
   });
 });
 
-getProductDetails = catchAsyncError(async (req, res, next) => {
+const getProductDetails = catchAsyncError(async (req, res, next) => {
   const productId = req.params.productId;
   const product = await Product.findById(productId);
   if (!product) {
@@ -52,7 +52,7 @@ getProductDetails = catchAsyncError(async (req, res, next) => {
 // usefingbyIdAndUpdate pass the product , req.body and object of three params
 // new runValidators and useFindAndModify
 
-updateProduct = catchAsyncError(async (req, res, next) => {
+const updateProduct = catchAsyncError(async (req, res, next) => {
   const productId = req.params.productId;
   let product = await Product.findById(productId);
   if (!product) {
@@ -72,7 +72,7 @@ updateProduct = catchAsyncError(async (req, res, next) => {
 
 //Delete the Product  --only Admin
 // find product by id if there then send else error
-deleteProduct = catchAsyncError(async (req, res, next) => {
+const deleteProduct = catchAsyncError(async (req, res, next) => {
   const productId = req.params.productId;
   const product = await Product.findById(productId);
 

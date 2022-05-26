@@ -8,7 +8,7 @@ const connectDatabase = () => {
     })
     .then((data) => {
       console.log(`database is connnected to host: ${data.connection.host}`);
-    })
+    });
 };
 
 module.exports = connectDatabase;
