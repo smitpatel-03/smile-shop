@@ -129,6 +129,29 @@ const getUserDetails = catchAsyncError(async (req, res, next) => {
   });
 });
 
+const updatePassword = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select("+password");
+
+  const isPasswordMatch = await user.comparePassword(req.body.oldPassword);
+
+  if (!isPasswordMatch) {
+    return next(new ErrorHandler("Invalid Email or Password", 401));
+  }
+
+  if (req.body.newPassword !== req.body.confirmPassword) {
+    return next(
+      new ErrorHandler(
+        "your password is not matching with confirm password",
+        401
+      )
+    );
+  }
+
+  user.password = req.body.newPassword;
+  await user.save();
+
+  sendToken(user, 200, res);
+});
 
 module.exports = {
   registerUser,
@@ -137,4 +160,5 @@ module.exports = {
   forgotPassword,
   resetPassword,
   getUserDetails,
+  updatePassword,
 };
