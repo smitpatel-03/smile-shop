@@ -120,10 +120,21 @@ const resetPassword = catchAsyncError(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
+const getUserDetails = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.user.id);
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+
 module.exports = {
   registerUser,
   loginUser,
   userLogout,
   forgotPassword,
   resetPassword,
+  getUserDetails,
 };
