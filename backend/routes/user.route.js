@@ -7,6 +7,7 @@ const {
   resetPassword,
   getUserDetails,
   updatePassword,
+  updateProfile,
 } = require("../controller/user.controller");
 const userRoute = express.Router();
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
@@ -18,5 +19,6 @@ userRoute.put("/password/reset/:token", resetPassword);
 userRoute.post("/logout", userLogout);
 userRoute.get("/me", isAuthenticatedUser, getUserDetails);
 userRoute.put("/password/update", isAuthenticatedUser, updatePassword);
+userRoute.put("/me/update", isAuthenticatedUser, updateProfile);
 
 module.exports = userRoute;

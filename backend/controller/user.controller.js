@@ -153,6 +153,21 @@ const updatePassword = catchAsyncError(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
+const updateProfile = catchAsyncError(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+
+  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: true,
+  });
+
+  res.status(200).json({ success: true });
+});
+
 module.exports = {
   registerUser,
   loginUser,
@@ -161,4 +176,5 @@ module.exports = {
   resetPassword,
   getUserDetails,
   updatePassword,
+  updateProfile,
 };
