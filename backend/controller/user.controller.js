@@ -168,6 +168,34 @@ const updateProfile = catchAsyncError(async (req, res, next) => {
   res.status(200).json({ success: true });
 });
 
+// Get All Users
+
+const getAllUsers = catchAsyncError(async (req, res, next) => {
+  const users = await User.find();
+
+  res.status(200).json({
+    success: true,
+    users,
+  });
+});
+
+// Get Single User Details
+
+const getSingleUser = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.params.userId);
+
+  if (!user) {
+    return next(
+      new ErrorHandler("user does not exist with id " + req.params.id, 400)
+    );
+  }
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
 module.exports = {
   registerUser,
   loginUser,
@@ -177,4 +205,6 @@ module.exports = {
   getUserDetails,
   updatePassword,
   updateProfile,
+  getAllUsers,
+  getSingleUser,
 };
