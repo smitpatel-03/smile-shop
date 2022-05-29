@@ -186,7 +186,7 @@ const getSingleUser = catchAsyncError(async (req, res, next) => {
 
   if (!user) {
     return next(
-      new ErrorHandler("user does not exist with id " + req.params.id, 400)
+      new ErrorHandler("user does not exist with id " + req.params.userId, 400)
     );
   }
 
@@ -194,6 +194,39 @@ const getSingleUser = catchAsyncError(async (req, res, next) => {
     success: true,
     user,
   });
+});
+
+// Update user role Ex. user to admin --Admin
+
+const updateRole = catchAsyncError(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
+
+  const user = await User.findByIdAndUpdate(req.params.userId, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: true,
+  });
+
+  res.status(200).json({ success: true, user });
+});
+
+// Delete User -- Admin
+
+const deleteUser = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.params.userId);
+
+  if (!user) {
+    return next(
+      new ErrorHandler("user does not exist with id " + req.params.userId, 400)
+    );
+  }
+
+  await user.remove();
+  res.status(200).json({ success: true, message: "User deleted successfully" });
 });
 
 module.exports = {
@@ -207,4 +240,6 @@ module.exports = {
   updateProfile,
   getAllUsers,
   getSingleUser,
+  updateRole,
+  deleteUser,
 };
