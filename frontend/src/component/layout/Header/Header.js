@@ -39,6 +39,8 @@ const options = {
   profileIcon: true,
   ProfileIconElement: FaUserAlt,
   searchIcon: true,
+  searchIconUrl: "/search",
+  cartIconUrl: "/cart",
   SearchIconElement: ImSearch,
   cartIcon: true,
   CartIconElement: BsFillCartCheckFill,
