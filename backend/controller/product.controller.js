@@ -16,7 +16,7 @@ const createProduct = catchAsyncError(async (req, res, next) => {
 //Get all products
 //Use Prodcuct.find() to get all products
 //if there is product then send the product else send error
-const getAllProducts = catchAsyncError(async (req, res) => {
+const getAllProducts = catchAsyncError(async (req, res, next) => {
   const resultPerPage = 5;
   const productsCount = await Product.countDocuments();
 
