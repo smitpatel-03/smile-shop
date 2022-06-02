@@ -31,7 +31,7 @@ productRouter.delete(
   authorizeRoles("admin"),
   deleteProduct
 );
-productRouter.get("/products/:productId", getProductDetails);
+productRouter.get("/product/:productId", getProductDetails);
 
 productRouter.put("/reviews", isAuthenticatedUser, createProductReviews);
 
