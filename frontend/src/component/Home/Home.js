@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect } from "react";
 import { CgMouse } from "react-icons/cg";
-import Product from "./ProductCard";
 import "./Home.css";
 import MetaData from "../layout/MetaData";
 import { getProducts } from "../../actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
+import ProductCard from "./ProductCard";
 const Home = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -43,7 +43,7 @@ const Home = () => {
           <div className="container" id="container">
             {products &&
               products.map((product, index) => (
-                <Product product={product} key={index} />
+                <ProductCard product={product} key={index} />
               ))}
           </div>
         </Fragment>
