@@ -1,7 +1,7 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
 const Product = require("../models/product.model");
 const ErrorHandler = require("../utils/errorHandler");
-const ApiFeature = require("../utils/apiFeatures");
+const ApiFeatures = require("../utils/apiFeatures");
 //Create new Product --only for admin
 //Use Product.create(req.body) for create the product
 
@@ -18,12 +18,14 @@ const createProduct = catchAsyncError(async (req, res, next) => {
 //if there is product then send the product else send error
 const getAllProducts = catchAsyncError(async (req, res) => {
   const resultPerPage = 5;
-  const apiFetures = new ApiFeature(Product, req.query)
+  const productsCount = await Product.countDocuments();
+
+  const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
-    .filter()
-    .pagination(resultPerPage);
+    .filter();
+
   const productCount = await Product.countDocuments();
-  const product = await apiFetures.query;
+  const product = await apiFeature.query;
 
   if (!product) {
     return next(new ErrorHandler("Product not found", 404));
