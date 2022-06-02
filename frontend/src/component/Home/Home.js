@@ -10,7 +10,7 @@ import ProductCard from "./ProductCard";
 const Home = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
-  const { products, productCount, loading, error } = useSelector(
+  const { products, loading, error } = useSelector(
     (state) => state.products
   );
 

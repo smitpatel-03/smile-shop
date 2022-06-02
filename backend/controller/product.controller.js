@@ -17,12 +17,12 @@ const createProduct = catchAsyncError(async (req, res, next) => {
 //Use Prodcuct.find() to get all products
 //if there is product then send the product else send error
 const getAllProducts = catchAsyncError(async (req, res, next) => {
-  const resultPerPage = 5;
-  const productsCount = await Product.countDocuments();
+  const resultPerPage = 8;
 
   const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
-    .filter();
+    .filter()
+    .pagination(resultPerPage);
 
   const productCount = await Product.countDocuments();
   const product = await apiFeature.query;
@@ -34,6 +34,7 @@ const getAllProducts = catchAsyncError(async (req, res, next) => {
     success: true,
     product,
     productCount,
+    resultPerPage,
   });
 });
 
