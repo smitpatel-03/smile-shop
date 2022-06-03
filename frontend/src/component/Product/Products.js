@@ -6,25 +6,39 @@ import { getProducts } from "../../actions/productActions";
 import Pagination from "react-js-pagination";
 import ProductCard from "../Home/ProductCard";
 import Loader from "../layout/Loader/Loader";
+import Slider from "@mui/material/Slider";
+import Typography from "@mui/material/Typography";
 import "./products.css";
 const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [price, setPrice] = useState([0, 25000]);
   const dispatch = useDispatch();
   const { keyword } = useParams();
-  const { products, loading, error, productCount, resultsPerPage } =
-    useSelector((state) => state.products);
+  const {
+    products,
+    loading,
+    error,
+    productCount,
+    resultsPerPage,
+    filterProductsCount,
+  } = useSelector((state) => state.products);
   const alert = useAlert();
 
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
+  };
+
+  const priceHandler = (event, newPrice) => {
+    setPrice(newPrice);
   };
   useEffect(() => {
     if (error) {
       console.log(error);
       alert.error(error);
     }
-    dispatch(getProducts(keyword, currentPage));
-  }, [dispatch, error, alert, keyword, currentPage]);
+    dispatch(getProducts(keyword, currentPage, price));
+  }, [dispatch, error, alert, keyword, currentPage, price]);
+  const count = filterProductsCount;
   return (
     <Fragment>
       {loading ? (
@@ -38,8 +52,18 @@ const Products = () => {
                 <ProductCard product={product} key={product._id} />
               ))}
           </div>
-
-          {resultsPerPage < productCount && (
+          <div className="filterBox">
+            <Typography>Price</Typography>
+            <Slider
+              value={price}
+              onChange={priceHandler}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              min={0}
+              max={25000}
+            />
+          </div>
+          {resultsPerPage < count && (
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}

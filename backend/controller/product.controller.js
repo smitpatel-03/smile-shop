@@ -21,11 +21,13 @@ const getAllProducts = catchAsyncError(async (req, res, next) => {
 
   const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
-    .filter()
-    .pagination(resultPerPage);
+    .filter();
 
+  let product = await apiFeature.query;
+  const filterProductsCount = await product.length;
+  apiFeature.pagination(resultPerPage);
   const productCount = await Product.countDocuments();
-  const product = await apiFeature.query;
+  product = await apiFeature.query.clone();
 
   if (!product) {
     return next(new ErrorHandler("Product not found", 404));
@@ -35,6 +37,7 @@ const getAllProducts = catchAsyncError(async (req, res, next) => {
     product,
     productCount,
     resultPerPage,
+    filterProductsCount,
   });
 });
 
