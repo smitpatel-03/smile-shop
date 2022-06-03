@@ -9,6 +9,7 @@ import ReviewCard from "./ReviewCard";
 import { Rating } from "@mui/material";
 import ReactStars from "react-rating-stars-component";
 import Loader from "../layout/Loader/Loader";
+import MetaData from "../layout/MetaData";
 
 const ProductDetails = () => {
   const params = useParams();
@@ -34,6 +35,7 @@ const ProductDetails = () => {
 
   return (
     <Fragment>
+      <MetaData title={product.name} />
       {loading ? (
         <Loader></Loader>
       ) : (

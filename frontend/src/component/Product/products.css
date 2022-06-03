@@ -84,6 +84,10 @@
   margin: 0.4vmax;
   cursor: pointer;
   transition: all 0.5s;
+  font-weight: bold;
+}
+.category-link.active {
+  font-weight: normal;
 }
 .category-link:hover {
   color: tomato;

@@ -9,9 +9,23 @@ import Loader from "../layout/Loader/Loader";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import "./products.css";
+import MetaData from "../layout/MetaData";
+const categories = [
+  "All",
+  "electronic",
+  "Laptop",
+  "Footwear",
+  "Bottom",
+  "Tops",
+  "Attire",
+  "Camera",
+  "SmartPhones",
+];
 const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
+  const [category, setCategory] = useState("");
+  const [ratings, setRatings] = useState(0);
   const dispatch = useDispatch();
   const { keyword } = useParams();
   const {
@@ -36,11 +50,12 @@ const Products = () => {
       console.log(error);
       alert.error(error);
     }
-    dispatch(getProducts(keyword, currentPage, price));
-  }, [dispatch, error, alert, keyword, currentPage, price]);
+    dispatch(getProducts(keyword, currentPage, price, category, ratings));
+  }, [dispatch, error, alert, keyword, currentPage, price, category, ratings]);
   const count = filterProductsCount;
   return (
     <Fragment>
+      <MetaData title="Products" />
       {loading ? (
         <Loader />
       ) : (
@@ -62,6 +77,33 @@ const Products = () => {
               min={0}
               max={25000}
             />
+            <Typography>Categories</Typography>
+            <ul className="categoryBox">
+              {categories.map((cat) => (
+                <li
+                  className={
+                    cat === category ? "category-link" : "category-link active"
+                  }
+                  key={cat}
+                  onClick={() => setCategory(cat)}
+                >
+                  {cat}
+                </li>
+              ))}
+            </ul>
+            <fieldset>
+              <Typography component="legend">Ratings Above</Typography>
+              <Slider
+                value={ratings}
+                onChange={(e, newRating) => {
+                  setRatings(newRating);
+                }}
+                aria-labelledby="continuous-slider"
+                valueLabelDisplay="auto"
+                min={0}
+                max={5}
+              />
+            </fieldset>
           </div>
           {resultsPerPage < count && (
             <div className="paginationBox">
