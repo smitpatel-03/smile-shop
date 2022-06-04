@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { ReactNavbar } from "overlay-navbar";
 import logo from "../../../images/logo.png";
 import { ImSearch } from "react-icons/im";
@@ -6,6 +6,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { BsFillCartCheckFill } from "react-icons/bs";
 
 const options = {
+  burgerColor: "#b3b0b0",
   burgerColorHover: "#eb4034",
   logo,
   logoWidth: "20vmax",
@@ -47,7 +48,22 @@ const options = {
 };
 
 const Header = () => {
-  return <ReactNavbar {...options} />;
+  return (
+    <Fragment>
+      <ReactNavbar {...options} />
+      <h1
+        className="header-logo"
+        style={{
+          position: "absolute",
+          color: "#b3b0b0",
+          transform: "translate(-50%, 50%)",
+          left: "50%",
+        }}
+      >
+        ECOMMERCE
+      </h1>
+    </Fragment>
+  );
 };
 
 export default Header;

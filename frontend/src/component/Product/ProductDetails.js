@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { getProductDetails } from "../../actions/productActions";
-import Carousel from "react-material-ui-carousel";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./ProductDetails.css";
 import ReviewCard from "./ReviewCard";
-import { Rating } from "@mui/material";
 import ReactStars from "react-rating-stars-component";
 import Loader from "../layout/Loader/Loader";
 import MetaData from "../layout/MetaData";
@@ -41,11 +41,13 @@ const ProductDetails = () => {
       ) : (
         <Fragment>
           <div className="ProductDetails">
-            <div style={{ width: "60%" }}>
+            <div>
               <Carousel>
                 {product.images &&
                   product.images.map((item, index) => (
-                    <img src={item.url} alt={item.url} key={index} />
+                    <div>
+                      <img src={item.url} alt={item.url} key={index} />
+                    </div>
                   ))}
               </Carousel>
             </div>
