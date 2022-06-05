@@ -53,9 +53,8 @@ const LoginSignUp = () => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-    for (let cred of myForm.entries()) {
-      console.log(cred[0] + ", " + cred[1]);
-    }
+    dispatch(register(myForm));
+    navigate("/account");
   };
 
   const registerDataChange = (e) => {
