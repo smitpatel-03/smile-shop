@@ -20,7 +20,7 @@ userRoute.post("/register", registerUser);
 userRoute.post("/login", loginUser);
 userRoute.post("/password/forgot", forgotPassword);
 userRoute.put("/password/reset/:token", resetPassword);
-userRoute.post("/logout", userLogout);
+userRoute.get("/logout", userLogout);
 userRoute.get("/me", isAuthenticatedUser, getUserDetails);
 userRoute.put("/password/update", isAuthenticatedUser, updatePassword);
 userRoute.put("/me/update", isAuthenticatedUser, updateProfile);

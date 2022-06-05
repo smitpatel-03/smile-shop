@@ -4,6 +4,7 @@ import logo from "../../../images/logo.png";
 import { ImSearch } from "react-icons/im";
 import { FaUserAlt } from "react-icons/fa";
 import { BsFillCartCheckFill } from "react-icons/bs";
+import "./Header.css";
 
 const options = {
   burgerColor: "#b3b0b0",
