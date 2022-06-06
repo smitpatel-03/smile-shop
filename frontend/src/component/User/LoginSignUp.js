@@ -6,7 +6,6 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  clearError,
   clearErrors,
   login,
   register,
@@ -92,7 +91,7 @@ const LoginSignUp = () => {
   useEffect(() => {
     if (error) {
       alert.error(error);
-      dispatch(clearError());
+      dispatch(clearErrors());
     }
     if (isAuthenticated) {
       navigate("/account");
