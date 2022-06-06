@@ -13,6 +13,8 @@ import store from "./store";
 import { loadUser } from "./actions/userAction";
 import { useSelector } from "react-redux";
 import UserOptions from "./component/layout/Header/UserOptions";
+import Profile from "./component/User/Profile.js"
+
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -34,6 +36,7 @@ function App() {
         <Route exact path="/products/:keyword" element={<Products />} />
         <Route exact path="/search" element={<Search />} />
         <Route exact path="/login" element={<LoginSignUp />} />
+        <Route exact path="/account" element={<Profile />} />
       </Routes>
       <Footer />
     </Router>
