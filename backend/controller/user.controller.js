@@ -76,7 +76,7 @@ const forgotPassword = catchAsyncError(async (req, res, next) => {
 
   const resetPasswordUrl = `${req.protocol}://${req.get(
     "host"
-  )}/api/v1/password/reset/${resetToken}`;
+  )}/password/reset/${resetToken}`;
   const message = `Your Password reset token is :- \n\n ${resetPasswordUrl} \n\n If your have not request this email then please igonre it`;
   try {
     await sendEmail({

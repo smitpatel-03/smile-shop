@@ -10,7 +10,6 @@ const sendEmail = async (options) => {
       pass: process.env.SMPT_PASSWORD,
     },
   });
-  console.log("called");
   const mailOptions = {
     from: "",
     to: options.email,
