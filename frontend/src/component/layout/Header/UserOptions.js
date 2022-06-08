@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import "./Header.css";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../actions/userAction";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 const UserOptions = ({ user }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,6 +31,9 @@ const UserOptions = ({ user }) => {
   function dashboard() {
     navigate("/dashboard");
   }
+  function cart() {
+    navigate("/cart");
+  }
 
   const action = [
     {
@@ -40,6 +45,11 @@ const UserOptions = ({ user }) => {
       icon: <PersonIcon />,
       name: "Profile",
       func: profile,
+    },
+    {
+      icon: <ShoppingCartIcon />,
+      name: "Cart",
+      func: cart,
     },
     {
       icon: <ExitToAppIcon />,
