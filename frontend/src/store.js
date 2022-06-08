@@ -10,15 +10,23 @@ import {
   updateProfileReducer,
   userReducer,
 } from "./reducers/userReducer";
+import { cartReducer } from "./reducers/cardReducer";
 const reducers = combineReducers({
   products: productReducer,
   productDetails: productDetailsReducer,
   user: userReducer,
   profile: updateProfileReducer,
   forgotPassword: forgotPasswordReducer,
+  cart: cartReducer,
 });
 
-let initialState = {};
+let initialState = {
+  cart: {
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+  },
+};
 
 const middleware = [thunk];
 
