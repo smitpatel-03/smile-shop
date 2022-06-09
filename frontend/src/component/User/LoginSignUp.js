@@ -1,15 +1,11 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  clearErrors,
-  login,
-  register,
-} from "../../actions/userAction";
+import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import Loader from "../layout/Loader/Loader";
 
@@ -33,7 +29,8 @@ const LoginSignUp = () => {
   });
 
   const navigate = useNavigate();
-
+  const location = useLocation();
+  console.log(location);
   const { name, email, password } = user;
   const [avatar, setAvatar] = useState("/Profile.png");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
@@ -93,10 +90,15 @@ const LoginSignUp = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
+    console.log(location.search.split("="));
+    const redirect = location.search
+      ? "/" + location.search.split("=")[1]
+      : "/account";
+    console.log(redirect);
     if (isAuthenticated) {
-      navigate("/account");
+      navigate(redirect);
     }
-  }, [error, alert, dispatch, isAuthenticated, navigate]);
+  }, [error, alert, dispatch, isAuthenticated, navigate, location]);
 
   return (
     <Fragment>

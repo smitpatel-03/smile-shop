@@ -10,7 +10,7 @@ import {
   updateProfileReducer,
   userReducer,
 } from "./reducers/userReducer";
-import { cartReducer } from "./reducers/cardReducer";
+import { cartReducer } from "./reducers/cartReducer";
 const reducers = combineReducers({
   products: productReducer,
   productDetails: productDetailsReducer,
@@ -24,6 +24,9 @@ let initialState = {
   cart: {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+    shippingInfo: localStorage.getItem("shippingInfo")
+      ? JSON.parse(localStorage.getItem("shippingInfo"))
       : [],
   },
 };
