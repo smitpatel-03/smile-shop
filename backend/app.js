@@ -8,6 +8,8 @@ const errorMiddleware = require("./middleware/error");
 const userRoute = require("./routes/user.route");
 const cookieParser = require("cookie-parser");
 const orderRoute = require("./routes/order.route");
+const paymentRouter = require("./routes/payment.route");
+require("dotenv").config({ path: "backend/config/config.env" });
 
 const corsOption = {
   origin: ["http://localhost:3000"],
@@ -21,6 +23,8 @@ app.use(fileUpload());
 app.use("/api/v1", productRouter);
 app.use("/api/v1", userRoute);
 app.use("/api/v1/", orderRoute);
+app.use("/api/v1", paymentRouter);
+
 //middleware
 app.use(errorMiddleware);
 
