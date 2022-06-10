@@ -2,7 +2,11 @@ import React, { Fragment, useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearError, getProductDetails } from "../../actions/productActions";
+import {
+  clearError,
+  getProductDetails,
+  newReview,
+} from "../../actions/productActions";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
@@ -10,6 +14,12 @@ import MetaData from "../layout/MetaData";
 import { addItemsToCart } from "../../actions/cartActions";
 import { Rating } from "@mui/material";
 import { useParams } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -18,7 +28,10 @@ const ProductDetails = () => {
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
-
+  const { success, error: reviewError } = useSelector(
+    (state) => state.newReview
+  );
+  console.log(success);
   const options = {
     size: "large",
     value: product.ratings,
@@ -28,6 +41,8 @@ const ProductDetails = () => {
 
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
 
   const increaseQuantity = () => {
     if (product.stock <= quantity) return;
@@ -51,14 +66,32 @@ const ProductDetails = () => {
   const submitReviewToggle = () => {
     open ? setOpen(false) : setOpen(true);
   };
+  const reviewSubmitHandler = () => {
+    const myForm = new FormData();
 
+    myForm.set("rating", rating);
+    myForm.set("comment", comment);
+    myForm.set("productId", params.productId);
+
+    dispatch(newReview(myForm));
+
+    setOpen(false);
+  };
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearError());
     }
+    if (reviewError) {
+      alert.error(reviewError);
+      dispatch(clearError());
+    }
+    if (success) {
+      alert.success("Review Submitted Successfully");
+      dispatch({ type: NEW_REVIEW_RESET });
+    }
     dispatch(getProductDetails(params.productId));
-  }, [dispatch, params.productId, error, alert]);
+  }, [dispatch, params.productId, error, alert, reviewError, success]);
 
   return (
     <Fragment>
@@ -129,7 +162,36 @@ const ProductDetails = () => {
           </div>
 
           <h3 className="reviewsHeading">REVIEWS</h3>
+          <Dialog
+            aria-labelledby="simple-dialog-title"
+            open={open}
+            onClose={submitReviewToggle}
+          >
+            <DialogTitle>Submit Review</DialogTitle>
+            <DialogContent className="submitDialog">
+              <Rating
+                onChange={(e) => setRating(e.target.value)}
+                value={rating}
+                size="large"
+              />
 
+              <textarea
+                className="submitDialogTextArea"
+                cols="30"
+                rows="5"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              ></textarea>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={submitReviewToggle} color="secondary">
+                Cancel
+              </Button>
+              <Button onClick={reviewSubmitHandler} color="primary">
+                Submit
+              </Button>
+            </DialogActions>
+          </Dialog>
           {product.reviews && product.reviews[0] ? (
             <div className="reviews">
               {product.reviews &&
