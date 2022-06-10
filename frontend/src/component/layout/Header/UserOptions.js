@@ -27,9 +27,10 @@ const UserOptions = ({ user }) => {
   }
   function logOut() {
     dispatch(logout());
+    navigate("/login");
   }
   function dashboard() {
-    navigate("/dashboard");
+    navigate("/admin/dashboard");
   }
   function cart() {
     navigate("/cart");
