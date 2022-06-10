@@ -23,10 +23,10 @@ import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder";
 import axios from "axios";
-import Payment from "./component/Cart/Payment";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import StripeProvider from "./component/StripeProvider";
+import OrderSuccess from "./component/Cart/OrderSuccess";
+import MyOrders from "./component/Order/MyOrders";
+import OrderDetails from "./component/Order/OrderDetails";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -74,6 +74,9 @@ function App() {
             path="/process/payment"
             element={<StripeProvider apiKey={stripeApiKey} />}
           />
+          <Route exact path="/success" element={<OrderSuccess />} />
+          <Route exact path="/orders" element={<MyOrders />} />
+          <Route exact path="/order/:id" element={<OrderDetails />} />
         </Route>
       </Routes>
       <Footer />

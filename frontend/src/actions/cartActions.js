@@ -5,7 +5,7 @@ import {
 } from "../constants/cartConstants";
 import axios from "axios";
 
-export const addItemsToCart = (id, qunatity) => async (dispatch, getState) => {
+export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/v1/product/${id}`);
   console.log(data);
   dispatch({
@@ -16,7 +16,7 @@ export const addItemsToCart = (id, qunatity) => async (dispatch, getState) => {
       price: data.product.price,
       image: data.product.images[0].url,
       stock: data.product.stock,
-      qunatity,
+      quantity,
     },
   });
 

@@ -61,18 +61,18 @@ const Cart = () => {
                   <div className="cartInput">
                     <button
                       onClick={() =>
-                        decreaseQuantity(item.product, item.qunatity)
+                        decreaseQuantity(item.product, item.quantity)
                       }
                     >
                       -
                     </button>
-                    <input type="number" value={item.qunatity} readOnly />
+                    <input type="number" value={item.quantity} readOnly />
                     {console.log(item)}
                     <button
                       onClick={() =>
                         increaseQuantity(
                           item.product,
-                          item.qunatity,
+                          item.quantity,
                           item.stock
                         )
                       }
@@ -81,7 +81,7 @@ const Cart = () => {
                     </button>
                   </div>
                   <p className="cartSubtotal">{`₹${
-                    item.price * item.qunatity
+                    item.price * item.quantity
                   }`}</p>
                 </div>
               ))}
@@ -91,7 +91,7 @@ const Cart = () => {
               <div className="cartGrossProfitBox">
                 <p>Gross Total</p>
                 <p>{`₹${cartItems.reduce(
-                  (acc, item) => acc + item.qunatity * item.price,
+                  (acc, item) => acc + item.quantity * item.price,
                   0
                 )}`}</p>
               </div>

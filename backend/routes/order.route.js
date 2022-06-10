@@ -13,9 +13,7 @@ const orderRoute = express.Router();
 
 orderRoute.route("/order/new").post(isAuthenticatedUser, newOrder);
 
-orderRoute
-  .route("/order/:orderId")
-  .get(isAuthenticatedUser, authorizeRoles("admin"), getSingleOrder);
+orderRoute.route("/order/:orderId").get(isAuthenticatedUser, getSingleOrder);
 
 orderRoute.route("/orders/me").get(isAuthenticatedUser, myOrders);
 
