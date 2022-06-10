@@ -41,6 +41,17 @@ const getAllProducts = catchAsyncError(async (req, res, next) => {
   });
 });
 
+//Get all products for admin only --- without pagination and filter
+const getAdminProducts = catchAsyncError(async (req, res, next) => {
+  const products = await Product.find();
+  if (!products) {
+    return next(new ErrorHandler("Product not found", 404));
+  }
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
 const getProductDetails = catchAsyncError(async (req, res, next) => {
   const productId = req.params.productId;
   const product = await Product.findById(productId);
@@ -185,6 +196,7 @@ const deleteProductReview = catchAsyncError(async (req, res, next) => {
 
 module.exports = {
   getAllProducts,
+  getAdminProducts,
   createProduct,
   updateProduct,
   deleteProduct,
