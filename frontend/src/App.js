@@ -32,6 +32,8 @@ import AdminRoute from "./component/Route/AdminRoute";
 import ProductList from "./component/Product/ProductList";
 import NewProduct from "./component/Product/NewProduct";
 import UpdateProduct from "./component/Product/UpdateProduct";
+import OrderList from "./component/Admin/OrderList";
+import ProcessOrder from "./component/Order/ProcessOrder";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -88,6 +90,8 @@ function App() {
           <Route exact path="/admin/products" element={<ProductList />} />
           <Route exact path="/admin/product" element={<NewProduct />} />
           <Route exact path="/admin/product/:id" element={<UpdateProduct />} />
+          <Route exact path="/admin/orders" element={<OrderList />} />
+          <Route exact path="/admin/order/:id" element={<ProcessOrder />} />
         </Route>
       </Routes>
       <Footer />
