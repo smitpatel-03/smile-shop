@@ -31,7 +31,6 @@ const ProductDetails = () => {
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
-  console.log(success);
   const options = {
     size: "large",
     value: product.ratings,
