@@ -2,14 +2,19 @@ import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "./ProductList.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearError, getAdminProducts } from "../../actions/productActions";
-import { Link } from "react-router-dom";
+import {
+  clearError,
+  deleteProduct,
+  getAdminProducts,
+} from "../../actions/productActions";
+import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SideBar from "../Admin/Sidebar";
 import { Button } from "@mui/material";
+import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
 const ProductList = ({ history }) => {
   const dispatch = useDispatch();
@@ -17,15 +22,31 @@ const ProductList = ({ history }) => {
   const alert = useAlert();
 
   const { error, products } = useSelector((state) => state.products);
+  const navigate = useNavigate();
+  const { error: deleteError, isDeleted } = useSelector(
+    (state) => state.product
+  );
+
+  const deleteProductHandler = (id) => {
+    dispatch(deleteProduct(id));
+  };
 
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearError());
     }
-
+    if (deleteError) {
+      alert.error(error);
+      dispatch(clearError());
+    }
+    if (isDeleted) {
+      alert.success("Product Deleted Successfully");
+      navigate("/admin/dashboard");
+      dispatch({ type: DELETE_PRODUCT_RESET });
+    }
     dispatch(getAdminProducts());
-  }, [dispatch, alert, error]);
+  }, [dispatch, alert, error, isDeleted, deleteError, navigate]);
 
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
@@ -66,7 +87,11 @@ const ProductList = ({ history }) => {
               <EditIcon />
             </Link>
 
-            <Button>
+            <Button
+              onClick={() =>
+                deleteProductHandler(params.getValue(params.id, "id"))
+              }
+            >
               <DeleteIcon />
             </Button>
           </Fragment>
