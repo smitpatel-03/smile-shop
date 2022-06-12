@@ -16,7 +16,7 @@ import SideBar from "../Admin/Sidebar";
 import { Button } from "@mui/material";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
-const ProductList = ({ history }) => {
+const ProductList = () => {
   const dispatch = useDispatch();
 
   const alert = useAlert();

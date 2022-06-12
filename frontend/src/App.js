@@ -35,6 +35,8 @@ import UpdateProduct from "./component/Product/UpdateProduct";
 import OrderList from "./component/Admin/OrderList";
 import ProcessOrder from "./component/Order/ProcessOrder";
 import UserList from "./component/Admin/UserList";
+import UpdateUser from "./component/Admin/UpdateUser";
+import ProductReviews from "./component/Admin/ProductReviews";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -94,6 +96,8 @@ function App() {
           <Route exact path="/admin/orders" element={<OrderList />} />
           <Route exact path="/admin/order/:id" element={<ProcessOrder />} />
           <Route exact path="/admin/users" element={<UserList />} />
+          <Route exact path="/admin/user/:id" element={<UpdateUser />} />
+          <Route exact path="/admin/reviews" element={<ProductReviews />} />
         </Route>
       </Routes>
       <Footer />
