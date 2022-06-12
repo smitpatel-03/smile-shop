@@ -37,6 +37,7 @@ import ProcessOrder from "./component/Order/ProcessOrder";
 import UserList from "./component/Admin/UserList";
 import UpdateUser from "./component/Admin/UpdateUser";
 import ProductReviews from "./component/Admin/ProductReviews";
+import NotFound from "./component/layout/NotFound/NotFound";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -99,6 +100,7 @@ function App() {
           <Route exact path="/admin/user/:id" element={<UpdateUser />} />
           <Route exact path="/admin/reviews" element={<ProductReviews />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>
