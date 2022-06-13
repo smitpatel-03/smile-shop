@@ -41,12 +41,12 @@
 
 .homeHeading {
   text-align: center;
-  font-family: Roboto;
+  font-family: Montserrat;
   font-size: 1.4vmax;
   border-bottom: 1px solid rgba(21, 21, 21, 0.5);
   width: 20vmax;
   padding: 1vmax;
-  margin: 5vmax auto;
+  margin: 5vmax auto 0vmax;
   color: rgb(0, 0, 0, 0.7);
 }
 
@@ -55,8 +55,15 @@
   margin: 2vmax auto;
   width: 80vw;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   max-width: 100%;
+}
+.product-container {
+  padding: 5px;
+  border-radius: 10px;
+  margin: 2vmax;
+  transition: all 0.5s;
+  border: 1px solid #cce7d0;
 }
 
 .productCard {
@@ -64,14 +71,13 @@
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: rgb(48, 48, 48);
-  margin: 2vmax;
-  transition: all 0.5s;
+  color: rgb(80, 17, 17);
   padding-bottom: 0.5vmax;
 }
 
 .productCard > img {
   width: 14vmax;
+  border-radius: 20px;
 }
 
 .productCard > div {
@@ -83,26 +89,30 @@
 
 .productCardSpan {
   margin: 0.5vmax;
-  font: 300 0.7vmax "Roboto";
+  font: 300 0.7vmax "Montserrat";
 }
 
 .productCard > p {
-  font-family: "Roboto";
+  font-family: "Montserrat";
   font-size: 1.2vmax;
   margin: 1vmax 0.5vmax;
   margin-bottom: 0;
 }
-
+.productCard > h6 {
+  font-family: "Montserrat";
+  font-size: 0.9vmax;
+  margin: 1vmax 0.5vmax;
+  margin-bottom: 0;
+}
 .productCard > span {
   margin: 0.5vmax;
-  color: tomato;
+  color: #686868;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 1vmax;
 }
 
-.productCard:hover {
+.product-container:hover {
   box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
-
   transform: translateY(-1vmax);
 }
 
@@ -125,22 +135,23 @@
   .productCard > span {
     font-size: 1.5vmax;
   }
-
+  .container {
+    min-width: 100vw;
+  }
   .productCard > div > span {
     margin: 0 0.5vmax;
-    font: 300 1vmax "Roboto";
+    font: 300 1vmax "Montserrat";
+  }
+  .product-container {
+    padding: 15px;
+    margin: 1vmax;
   }
 }
 
 @media (max-width: 768px) {
   .homeHeading {
     text-align: center;
-    font-family: Roboto;
-    font-size: 1.4vmax;
-    border-bottom: 1px solid rgba(21, 21, 21, 0.5);
-    width: 20vmax;
-    padding: 1vmax;
-    margin: 5vmax auto;
-    color: rgb(0, 0, 0, 0.7);
+    font-family: Montserrat;
+    font-size: 2vmax;
   }
 }

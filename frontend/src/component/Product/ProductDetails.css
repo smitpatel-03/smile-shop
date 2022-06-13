@@ -29,7 +29,7 @@
 
 .detailsBlock-1 > h2 {
   color: rgb(54, 54, 54);
-  font: 600 1.6vmax "Roboto";
+  font: 600 1.6vmax "Montserrat";
 }
 
 .detailsBlock-1 > p {
@@ -84,7 +84,7 @@
   width: 1vmax;
   text-align: center;
   outline: none;
-  font: 400 0.8vmax "Roboto";
+  font: 400 0.8vmax "Montserrat";
   color: rgba(0, 0, 0, 0.74);
 }
 
@@ -93,8 +93,8 @@
   cursor: pointer;
   color: white;
   transition: all 0.5s;
-  background-color: tomato;
-  font: 500 0.7vmax "Roboto";
+  background-color: #686868;
+  font: 500 0.7vmax "Montserrat";
   border-radius: 20px;
   padding: 0.5vmax 2vmax;
   margin: 1vmax;
@@ -110,7 +110,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.205);
   padding: 1vmax 0;
   color: rgba(0, 0, 0, 0.651);
-  font: 400 1vmax "Roboto";
+  font: 400 1vmax "Montserrat";
   margin: 1vmax 0;
 }
 
@@ -126,8 +126,8 @@
 
 .submitReview {
   border: none;
-  background-color: tomato;
-  font: 500 0.7vmax "Roboto";
+  background-color: #686868;
+  font: 500 0.7vmax "Montserrat";
   border-radius: 20px;
   padding: 0.6vmax 2vmax;
   margin: 1vmax 0;
@@ -150,12 +150,12 @@
   margin: 1vmax 0;
   outline: none;
   padding: 1rem;
-  font: 300 1rem "Roboto";
+  font: 300 1rem "Montserrat";
 }
 
 .reviewsHeading {
   color: #000000be;
-  font: 500 1.4vmax "Roboto";
+  font: 500 1.4vmax "Montserrat";
   text-align: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.226);
   padding: 1vmax;
@@ -185,7 +185,7 @@
 }
 .reviewCard > p {
   color: rgba(0, 0, 0, 0.836);
-  font: 600 0.9vmax "Roboto";
+  font: 600 0.9vmax "Montserrat";
 }
 .reviewCardComment {
   color: rgba(0, 0, 0, 0.445);
@@ -245,11 +245,11 @@
   .detailsBlock-3-1-1 > input {
     padding: 1.5vmax;
     width: 3vmax;
-    font: 400 1.8vmax "Roboto";
+    font: 400 1.8vmax "Montserrat";
   }
 
   .detailsBlock-3-1 > button:last-child {
-    font: 500 1.7vmax "Roboto";
+    font: 500 1.7vmax "Montserrat";
     padding: 1.5vmax;
     width: 20vmax;
     margin: 3vmax 0;
@@ -258,7 +258,7 @@
   .detailsBlock-3 > p {
     padding: 2.5vmax 0;
     text-align: center;
-    font: 400 2vmax "Roboto";
+    font: 400 2vmax "Montserrat";
   }
 
   .detailsBlock-4 {
@@ -270,14 +270,14 @@
   }
 
   .submitReview {
-    font: 500 1.7vmax "Roboto";
+    font: 500 1.7vmax "Montserrat";
     padding: 1.5vmax;
     width: 20vmax;
     margin: 3vmax 0;
   }
 
   .reviewCard > p {
-    font: 600 3vw "Roboto";
+    font: 600 3vw "Montserrat";
   }
   .reviewCardComment {
     font: 300 5vw cursive;

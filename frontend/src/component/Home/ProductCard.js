@@ -13,15 +13,18 @@ const ProductCard = ({ product }) => {
   };
   return (
     <Fragment>
-      <Link to={`/product/${product._id}`} className="productCard">
-        <img src={product.images[0].url} alt={product.name} />
-        <p>{product.name}</p>
-        <div>
-          <ReactStars {...options} />{" "}
-          <span> {product.numOfReviews} Reviews</span>
-        </div>
-        <span>{`₹${product.price}`}</span>
-      </Link>
+      <div className="product-container">
+        <Link to={`/product/${product._id}`} className="productCard">
+          <img src={product.images[0].url} alt={product.name} />
+          <p>{product.name}</p>
+          <h6>{product.category}</h6>
+          <div>
+            <ReactStars {...options} />{" "}
+            <span> {product.numOfReviews} Reviews</span>
+          </div>
+          <span>{`₹${product.price}`}</span>
+        </Link>
+      </div>
     </Fragment>
   );
 };

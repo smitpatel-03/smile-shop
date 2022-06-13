@@ -14,17 +14,17 @@
 }
 
 .sidebar > a > img:hover {
-  filter: drop-shadow(0 0 10px tomato);
+  filter: drop-shadow(0 0 10px #686868);
 }
 .sidebar a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.493);
-  font: 200 1rem "Roboto";
+  font: 200 1rem "Montserrat";
   padding: 2rem;
   transition: all 0.5s;
 }
 .sidebar a:hover {
-  color: tomato;
+  color: #686868;
   transform: scale(1.1);
 }
 
@@ -38,4 +38,4 @@
 
 .MuiTypography-root {
   background-color: #fff !important;
-}   
+}

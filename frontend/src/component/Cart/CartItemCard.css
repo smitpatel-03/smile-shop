@@ -22,13 +22,13 @@
 }
 
 .CartItemCard > div > span {
-  font: 300 0.9vmax "Roboto";
+  font: 300 0.9vmax "Montserrat";
   color: rgba(24, 24, 24, 0.815);
 }
 
 .CartItemCard > div > p {
-  color: tomato;
-  font: 100 0.8vmax "Roboto";
+  color: #686868;
+  font: 100 0.8vmax "Montserrat";
   cursor: pointer;
 }
 
@@ -50,10 +50,10 @@
   }
 
   .CartItemCard > div > span {
-    font: 300 1.9vmax "Roboto";
+    font: 300 1.9vmax "Montserrat";
   }
 
   .CartItemCard > div > p {
-    font: 100 1.8vmax "Roboto";
+    font: 100 1.8vmax "Montserrat";
   }
 }

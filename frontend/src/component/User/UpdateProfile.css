@@ -22,7 +22,7 @@
 .updateProfileHeading {
   text-align: center;
   color: rgba(0, 0, 0, 0.664);
-  font: 400 1.3vmax "Roboto";
+  font: 400 1.3vmax "Montserrat";
   padding: 1.3vmax;
   border-bottom: 1px solid rgba(0, 0, 0, 0.205);
   width: 50%;
@@ -94,9 +94,9 @@
 
 .updateProfileBtn {
   border: none;
-  background-color: tomato;
+  background-color: #686868;
   color: white;
-  font: 300 0.9vmax "Roboto";
+  font: 300 0.9vmax "Montserrat";
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -143,7 +143,7 @@
   }
 
   .updateProfileBtn {
-    font: 300 1.9vmax "Roboto";
+    font: 300 1.9vmax "Montserrat";
     padding: 1.8vmax;
   }
 }
