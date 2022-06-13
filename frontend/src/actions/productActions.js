@@ -40,11 +40,11 @@ export const getProducts =
       });
       let link;
       category = category === "All" ? "" : category;
+      console.log(category);
       category
         ? (link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`)
         : (link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`);
       const { data } = await axios.get(link);
-      console.log(keyword);
       dispatch({
         type: ALL_PRODUCT_SUCCESS,
         payload: data,

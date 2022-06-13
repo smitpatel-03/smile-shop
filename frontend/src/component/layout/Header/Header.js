@@ -1,13 +1,14 @@
 import React, { Fragment } from "react";
 import { ReactNavbar } from "overlay-navbar";
-import logo from "../../../images/logo.png";
+import logo from "../../../images/smile-shop.png";
 import { ImSearch } from "react-icons/im";
 import { FaUserAlt } from "react-icons/fa";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 const options = {
-  burgerColor: "#b3b0b0",
+  burgerColor: "#686868",
   burgerColorHover: "#eb4034",
   logo,
   logoWidth: "20vmax",
@@ -52,17 +53,19 @@ const Header = () => {
   return (
     <Fragment>
       <ReactNavbar {...options} />
-      <h1
-        className="header-logo"
-        style={{
-          position: "absolute",
-          color: "#b3b0b0",
-          transform: "translate(-50%, 50%)",
-          left: "50%",
-        }}
-      >
-        ECOMMERCE
-      </h1>
+      <Link to="/">
+        <h1
+          className="header-logo"
+          style={{
+            position: "absolute",
+            color: "#686868",
+            transform: "translate(-50%, 50%)",
+            left: "50%",
+          }}
+        >
+          Smile-Shop
+        </h1>
+      </Link>
     </Fragment>
   );
 };

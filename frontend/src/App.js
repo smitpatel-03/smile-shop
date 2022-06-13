@@ -50,7 +50,7 @@ function App() {
   useEffect(() => {
     Webfont.load({
       google: {
-        families: ["Roboto", "Droid Sans", "Chilanka"],
+        families: ["Roboto", "Droid Sans", "Chilanka","Spartan"],
       },
     });
     store.dispatch(loadUser());

@@ -12,12 +12,10 @@ import "./products.css";
 import MetaData from "../layout/MetaData";
 const categories = [
   "All",
-  "electronic",
   "Laptop",
   "Footwear",
   "Bottom",
   "Tops",
-  "Attire",
   "Camera",
   "SmartPhones",
 ];
@@ -47,7 +45,6 @@ const Products = () => {
   };
   useEffect(() => {
     if (error) {
-      console.log(error);
       alert.error(error);
     }
     dispatch(getProducts(keyword, currentPage, price, category, ratings));
