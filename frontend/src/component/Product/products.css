@@ -1,5 +1,5 @@
 .productsHeading {
-  margin: 2vmax auto;
+  margin: 5vmax auto 2vmax;
   width: 15vw;
   border-bottom: 1px solid rgba(0, 0, 0, 0.171);
   padding: 2vmax;
@@ -11,7 +11,7 @@
 .products {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 5vmax;
+  padding: 0px 5vmax 0 17vmax;
   justify-content: center;
   min-height: 30vh;
 }
@@ -71,6 +71,10 @@
   position: absolute;
   top: 10vmax;
   left: 4vmax;
+  border: 1px solid #cce7d0;
+  padding: 1vmax;
+  border-radius: 10px;
+  font-family: "Montserrat";
 }
 
 .categoryBox {
@@ -79,18 +83,21 @@
 
 .category-link {
   list-style: none;
-  color: rgba(0, 0, 0, 0.61);
-  font: 400 0.8vmax "Montserrat";
+  color: white;
+  font: 400 1.1vmax "Montserrat";
   margin: 0.4vmax;
   cursor: pointer;
+  padding: 4px;
+  border-radius: 2px;
+  background-color: #7c7c7cc9;
   transition: all 0.5s;
-  font-weight: bold;
-}
-.category-link.active {
   font-weight: normal;
 }
+.category-link.active {
+  background-color: #686868;
+}
 .category-link:hover {
-  color: #686868;
+  background-color: #686868;
 }
 
 .filterBox > fieldset {
@@ -98,6 +105,9 @@
 }
 
 @media screen and (max-width: 600px) {
+  .products {
+    padding: 0 3vmax;
+  }
   .filterBox {
     width: 20vmax;
     position: static;
@@ -109,5 +119,10 @@
   }
   .category-link {
     font: 400 1.8vmax "Montserrat";
+  }
+  .productsHeading {
+    font-size: 2vmax;
+    margin: 7vmax auto 2vmax;
+    text-align: center;
   }
 }

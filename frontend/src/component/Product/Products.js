@@ -79,7 +79,7 @@ const Products = () => {
               {categories.map((cat) => (
                 <li
                   className={
-                    cat === category ? "category-link" : "category-link active"
+                    cat === category ? "category-link active" : "category-link"
                   }
                   key={cat}
                   onClick={() => setCategory(cat)}

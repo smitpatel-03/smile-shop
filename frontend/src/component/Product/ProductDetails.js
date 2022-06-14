@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Carousel from "react-material-ui-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -98,18 +99,20 @@ const ProductDetails = () => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={`${product.name} -- ECOMMERCE`} />
+          <MetaData title={`${product.name} -- Smile-Shop`} />
           <div className="ProductDetails">
             <div>
               <Carousel>
                 {product.images &&
                   product.images.map((item, i) => (
-                    <img
-                      className="CarouselImage"
-                      key={i}
-                      src={item.url}
-                      alt={`${i} Slide`}
-                    />
+                    <div>
+                      <img
+                        className="CarouselImage"
+                        key={i}
+                        src={item.url}
+                        alt={`${i} Slide`}
+                      />
+                    </div>
                   ))}
               </Carousel>
             </div>

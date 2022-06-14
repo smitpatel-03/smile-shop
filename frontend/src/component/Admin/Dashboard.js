@@ -10,6 +10,11 @@ import { getAllOrders } from "../../actions/orderAction.js";
 import { getAllUsers } from "../../actions/userAction.js";
 import MetaData from "../layout/MetaData";
 import { Chart as ChartJS, registerables } from "chart.js";
+import DashboardCard from "./DashboardCard.js";
+import productsImg from "../../images/products.png";
+import orderImg from "../../images/orders.jpg";
+import usersImg from "../../images/users.jpg";
+
 ChartJS.register(...registerables);
 
 const Dashboard = () => {
@@ -25,7 +30,7 @@ const Dashboard = () => {
 
   products &&
     products.forEach((item) => {
-      if (item.Stock === 0) {
+      if (item.stock === 0) {
         outOfStock += 1;
       }
     });
@@ -76,31 +81,48 @@ const Dashboard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> ₹{totalAmount}
+              Total Amount Earned
+              <br /> ₹{totalAmount}
             </p>
           </div>
-          <div className="dashboardSummaryBox2">
-            <Link to="/admin/products">
-              <p>Product</p>
-              <p>{products && products.length}</p>
+          <div>
+            <Link to="/admin/products" style={{ textDecoration: "none" }}>
+              {products && (
+                <DashboardCard
+                  title="Products"
+                  amount={products.length}
+                  image={productsImg}
+                />
+              )}
             </Link>
-            <Link to="/admin/orders">
-              <p>Orders</p>
-              <p>{orders && orders.length}</p>
+            <Link to="/admin/orders" style={{ textDecoration: "none" }}>
+              {orders && (
+                <DashboardCard
+                  title="Orders"
+                  amount={orders.length}
+                  image={orderImg}
+                />
+              )}
             </Link>
-            <Link to="/admin/users">
-              <p>Users</p>
-              <p>{users && users.length}</p>
+            <Link to="/admin/users" style={{ textDecoration: "none" }}>
+              {users && (
+                <DashboardCard
+                  title="Users"
+                  amount={users.length}
+                  image={usersImg}
+                />
+              )}
             </Link>
           </div>
         </div>
+        <div className="charts">
+          <div className="lineChart">
+            <Line data={lineState} />
+          </div>
 
-        <div className="lineChart">
-          <Line data={lineState} />
-        </div>
-
-        <div className="doughnutChart">
-          <Doughnut data={doughnutState} />
+          <div className="doughnutChart">
+            <Doughnut data={doughnutState} />
+          </div>
         </div>
       </div>
     </div>

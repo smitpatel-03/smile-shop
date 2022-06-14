@@ -1,5 +1,5 @@
 {
-  "name": "e-commerce",
+  "name": "smile-shop",
   "version": "1.0.0",
   "description": "an ecommerce store with mern stack",
   "main": "backend/server.js",
@@ -9,7 +9,7 @@
     "dev": "nodemon backend/server.js"
   },
   "keywords": [
-    "e-commerce"
+    "smile-shop"
   ],
   "author": "Smit patel",
   "license": "ISC",

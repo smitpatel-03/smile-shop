@@ -120,7 +120,6 @@ const Shipping = () => {
             {country && (
               <div>
                 <TransferWithinAStationIcon />
-
                 <select
                   required
                   value={state}
