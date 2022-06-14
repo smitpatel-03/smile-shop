@@ -5,6 +5,7 @@ import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import Loader from "../layout/Loader/Loader";
 import "./SignUpLogin.css";
+import MetaData from "../layout/MetaData";
 
 const SignUpLogIn = () => {
   const dispatch = useDispatch();
@@ -86,6 +87,7 @@ const SignUpLogIn = () => {
 
   return (
     <Fragment>
+      <MetaData title="Smile-Shop" />
       {loading ? (
         <Loader />
       ) : (
@@ -123,7 +125,9 @@ const SignUpLogIn = () => {
                     <p className="signup">
                       Don't have an account ?
                       <br />
-                      <span onClick={toggleForm}>Sign Up.</span>
+                      <span onClick={toggleForm} style={{ cursor: "pointer" }}>
+                        Sign Up.
+                      </span>
                     </p>
                   </form>
                 </div>
@@ -173,7 +177,9 @@ const SignUpLogIn = () => {
                     <p className="signup">
                       Already have an account ?
                       <br />
-                      <span onClick={toggleForm}>Sign in.</span>
+                      <span onClick={toggleForm} style={{ cursor: "pointer" }}>
+                        Sign in.
+                      </span>
                     </p>
                   </form>
                 </div>
