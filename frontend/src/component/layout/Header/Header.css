@@ -12,6 +12,7 @@
 
 .header-logo {
   font-family: Montserrat;
+  z-index: 10;
 }
 
 .linksReactNavbar {

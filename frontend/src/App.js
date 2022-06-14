@@ -8,7 +8,6 @@ import Home from "./component/Home/Home";
 import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products";
 import Search from "./component/Product/Search";
-import LoginSignUp from "./component/User/LoginSignUp";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
 import { useSelector } from "react-redux";
@@ -38,6 +37,9 @@ import UserList from "./component/Admin/UserList";
 import UpdateUser from "./component/Admin/UpdateUser";
 import ProductReviews from "./component/Admin/ProductReviews";
 import NotFound from "./component/layout/NotFound/NotFound";
+import SignUpLogIn from "./component/User/SignUpLogIn";
+import About from "./component/layout/About/About";
+import Contact from "./component/layout/Contact/Contact";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -65,7 +67,7 @@ function App() {
         <Route exact path="/product/:productId" element={<ProductDetails />} />
         <Route exact path="/products/:keyword" element={<Products />} />
         <Route exact path="/search" element={<Search />} />
-        <Route exact path="/login" element={<LoginSignUp />} />
+        <Route exact path="/login" element={<SignUpLogIn />} />
         <Route exact path="/products" element={<Products />} />
         <Route exact path="/password/forgot" element={<ForgotPassword />} />
         <Route
@@ -73,6 +75,8 @@ function App() {
           path="/password/reset/:token"
           element={<ResetPassword />}
         />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/cart" element={<Cart />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/account" element={<Profile />} />

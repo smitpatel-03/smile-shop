@@ -1,0 +1,21 @@
+.about {
+  min-height: 100vh;
+  display: flex;
+  z-index: 1;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  flex-direction: column;
+}
+.about a {
+  font-size: 2vmax;
+  margin: 10px;
+}
+
+.follow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

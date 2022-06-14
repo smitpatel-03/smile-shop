@@ -1,0 +1,204 @@
+.login-section {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  min-height: 100vh;
+  background-color: #895f5f47;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-section .login-container {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  background: #fff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.login-section .login-container .user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.login-section .login-container .user .imgBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #ff0;
+  transition: 0.5s;
+}
+
+.login-section .login-container .user .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-section .login-container .user .formBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 40px; */
+  transition: 0.5s;
+}
+
+.formBx form {
+  padding: 40px;
+}
+.login-section .login-container .user .formBx form h2 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.login-section .login-container .user .formBx form input {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #333;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin: 11px 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.login-section .login-container .user .formBx form input[type="submit"] {
+  max-width: 100px;
+  background: #686868;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+.login-section .login-container .user .formBx form .signup {
+  position: relative;
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #555;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.login-section .login-container .user .formBx form .signup span {
+  font-weight: 600;
+  text-decoration: none;
+  color: #677eff;
+}
+
+.login-section .login-container .signupBx {
+  pointer-events: none;
+}
+
+.login-section .login-container.active .signupBx {
+  pointer-events: initial;
+}
+
+.login-section .login-container .signupBx .formBx {
+  left: 100%;
+}
+
+.login-section .login-container.active .signupBx .formBx {
+  left: 0;
+}
+
+.login-section .login-container .signupBx .imgBx {
+  left: -100%;
+}
+
+.login-section .login-container.active .signupBx .imgBx {
+  left: 0%;
+}
+
+.login-section .login-container .signinBx .formBx {
+  left: 0%;
+}
+
+.login-section .login-container.active .signinBx .formBx {
+  left: 100%;
+}
+
+.login-section .login-container .signinBx .imgBx {
+  left: 0%;
+}
+
+.login-section .login-container.active .signinBx .imgBx {
+  left: -100%;
+}
+
+@media (max-width: 991px) {
+  .login-section .login-container {
+    max-width: 400px;
+    margin-top: 45px;
+  }
+
+  .login-section .login-container .imgBx {
+    display: none;
+  }
+
+  .login-section .login-container .user .formBx {
+    width: 100%;
+  }
+}
+.forgot-pass {
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+}
+#registerImage {
+  display: flex;
+}
+#registerImage > img {
+  width: 3vmax;
+  border-radius: 100%;
+}
+#registerImage > input {
+  display: flex;
+  padding: 0%;
+}
+
+#registerImage > input::file-selector-button {
+  cursor: pointer;
+  width: 100%;
+  z-index: 2;
+  height: 5vh;
+  border: none;
+  margin: 0%;
+  font: 400 0.8vmax cursive;
+  transition: all 0.5s;
+  padding: 0 1vmax;
+  color: rgba(0, 0, 0, 0.623);
+  background-color: rgb(255, 255, 255);
+}
+
+#registerImage > input::file-selector-button:hover {
+  background-color: rgb(235, 235, 235);
+}
