@@ -36,6 +36,37 @@
   margin-right: 0.5rem;
 }
 
+.sidebar > span:first-child {
+  padding: 0;
+}
+.sidebar > span > img {
+  width: 100%;
+  transition: all 0.5s;
+}
+
+.sidebar > span > img:hover {
+  filter: drop-shadow(0 0 10px #686868);
+}
+.sidebar span {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.493);
+  font: 200 1rem "Montserrat";
+  padding: 2rem;
+  transition: all 0.5s;
+}
+.sidebar span:hover {
+  color: #686868;
+  transform: scale(1.1);
+}
+
+.sidebar span > P {
+  display: flex;
+  align-items: center;
+}
+.sidebar span > p > svg {
+  margin-right: 0.5rem;
+}
+
 .MuiTypography-root {
   background-color: #fff !important;
 }
