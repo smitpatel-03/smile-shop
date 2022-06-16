@@ -14,7 +14,7 @@
   "author": "Smit patel",
   "license": "ISC",
   "dependencies": {
-    "@mui/styles": "^5.8.0",
+    "@mui/styles": "^5.8.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "cloudinary": "^1.30.0",
@@ -24,12 +24,12 @@
     "express": "^4.18.1",
     "express-fileupload": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.3.4",
+    "mongoose": "^6.3.8",
     "nodemailer": "^6.7.5",
     "nodemon": "^2.0.16",
     "react-material-ui-carousel": "^3.4.2",
     "react-rating-stars-component": "^2.2.0",
-    "stripe": "^9.7.0",
+    "stripe": "^9.8.0",
     "validator": "^13.7.0"
   }
 }
