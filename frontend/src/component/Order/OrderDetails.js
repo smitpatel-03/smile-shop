@@ -11,7 +11,6 @@ import { useParams } from "react-router-dom";
 const OrderDetails = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const params = useParams();
-  console.log(params.id);
   const dispatch = useDispatch();
   const alert = useAlert();
 

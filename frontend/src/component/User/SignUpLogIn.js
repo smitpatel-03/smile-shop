@@ -31,7 +31,6 @@ const SignUpLogIn = () => {
 
   const toggleForm = () => {
     if (containerRef.current) {
-      console.log("run");
       containerRef.current.classList.toggle("active");
     }
   };
@@ -75,11 +74,9 @@ const SignUpLogIn = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    console.log(location.search.split("="));
     const redirect = location.search
       ? "/" + location.search.split("=")[1]
       : "/account";
-    console.log(redirect);
     if (isAuthenticated) {
       navigate(redirect);
     }

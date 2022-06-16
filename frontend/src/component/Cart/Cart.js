@@ -67,7 +67,6 @@ const Cart = () => {
                       -
                     </button>
                     <input type="number" value={item.quantity} readOnly />
-                    {console.log(item)}
                     <button
                       onClick={() =>
                         increaseQuantity(

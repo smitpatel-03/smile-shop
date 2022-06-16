@@ -30,7 +30,6 @@ const LoginSignUp = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
   const { name, email, password } = user;
   const [avatar, setAvatar] = useState("/Profile.png");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
@@ -90,11 +89,9 @@ const LoginSignUp = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    console.log(location.search.split("="));
     const redirect = location.search
       ? "/" + location.search.split("=")[1]
       : "/account";
-    console.log(redirect);
     if (isAuthenticated) {
       navigate(redirect);
     }

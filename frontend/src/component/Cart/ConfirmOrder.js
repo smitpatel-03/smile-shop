@@ -63,7 +63,6 @@ const ConfirmOrder = () => {
           <div className="confirmCartItems">
             <Typography>Your Cart Items:</Typography>
             <div className="confirmCartItemsContainer">
-              {console.log(cartItems)}
               {cartItems &&
                 cartItems.map((item) => (
                   <div key={item.product}>
