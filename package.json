@@ -26,7 +26,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.4",
     "nodemailer": "^6.7.7",
-    "nodemon": "^2.0.18",
+    "nodemon": "^2.0.19",
     "react-material-ui-carousel": "^3.4.2",
     "react-rating-stars-component": "^2.2.0",
     "stripe": "^9.12.0",
