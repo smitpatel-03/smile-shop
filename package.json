@@ -14,7 +14,7 @@
   "author": "Smit patel",
   "license": "ISC",
   "dependencies": {
-    "@mui/styles": "^5.9.1",
+    "@mui/styles": "^5.10.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "cloudinary": "^1.30.0",
